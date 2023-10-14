@@ -22,12 +22,31 @@ class Array {
 const countryList = new Array();
 
 // Add countries
-countryList.addCountry(1, 8, 7000000);//it will not added to array because second argument 
-//should be string
-console.log("Original array:", countryList.listCountries());//print an error statement
-countryList.addCountry("", 8, "7000000");
-console.log("Original array:", countryList.listCountries());
-
+countryList.addCountry(1, "palestine", 7000000);
 countryList.addCountry(2, "Jordan", 9000000);
 countryList.addCountry(3, "Syria", 10000000);
 console.log("Original array:", countryList.listCountries());
+
+// Add cities to the countries
+const citiesInPalestine = [
+    { name: "Jerusalem" },
+    { name: "Gaza" },
+    { name: "Bethlehem" },
+];
+
+const citiesInJordan = [
+    { name: "Amman" },
+    { name: "Irbid" },
+    { name: "Zarqa" },
+];
+
+const citiesInSyria = [
+    { name: "Damascus" },
+    { name: "Idlib" },
+    { name: "Homs" },
+];
+// Assign cities to countries
+countryList.countries[0].cities = citiesInPalestine;
+countryList.countries[1].cities = citiesInJordan;
+countryList.countries[2].cities = citiesInSyria;
+console.log("Original array:", JSON.stringify(countryList.listCountries(), null, 2));
