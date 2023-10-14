@@ -56,6 +56,15 @@ class Array {
             console.log("Please enter a valid input to add it at the beginning of the array.");
         }
     }
+    addToEnd(element) {
+        if (typeof element === 'string') {
+        this.countries[this.countries.length] = element;
+        }
+        else {
+            console.log("Please enter a valid input to add it at the end of the array.");
+        }
+      }
+      
 
 
 }
@@ -83,8 +92,8 @@ const equalSearchResults = countryList.searchByNameEquals("PALESTINE");
 console.log("the output of the element that you searched for in the array:");
 console.log(equalSearchResults);
 countryList.addToStart(0);//print an error message
+countryList.addToEnd("usa");
 console.log(countryList.countries);
-
-
+countryList.addToEnd(99);//print an error message
 
 
