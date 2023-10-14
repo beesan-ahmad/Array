@@ -16,6 +16,20 @@ class Array {
     listCountries() {
         return this.countries;
     }
+        // edit a country's information by ID
+        editCountry(id, newName, newPopulation) {
+            const country = this.countries.find(c => c.id === id);
+            if (country) {
+                if (newName) {
+                    country.name = newName;
+                }
+                if (newPopulation !== undefined) {
+                    country.population = newPopulation;
+                }
+            } else {
+                console.log("Country not found. Edit failed");
+            }
+        }
 }
 
 
@@ -50,3 +64,5 @@ countryList.countries[0].cities = citiesInPalestine;
 countryList.countries[1].cities = citiesInJordan;
 countryList.countries[2].cities = citiesInSyria;
 console.log("Original array:", JSON.stringify(countryList.listCountries(), null, 2));
+countryList.editCountry(2, "Jordan (Updated)", 11000000);
+console.log("Updated array:", countryList.listCountries());
