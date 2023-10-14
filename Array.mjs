@@ -45,6 +45,14 @@ class Array {
         }
         return resultOfEqualSearch;
     }
+
+    addToStart(element) {
+        for (let i = this.countries.length - 1; i >= 0; i--) {
+          this.countries[i + 1] = this.countries[i];
+        }
+        this.countries[0] = element;
+      }
+      
 }
 
 const countryList = new Array();
@@ -53,6 +61,8 @@ countryList.addToArray("jordan");
 countryList.addToArray("syria");
 countryList.addToArray("lebanon");
 console.log("original array:", countryList.countries);
+countryList.addToStart("qatar")
+console.log("after add element at the beginning of the array:", countryList.countries);
 
 countryList.sortFromAToZ();
 console.log("Sorting array from A to Z:", "[" + countryList.countries.join(", ") + "]");
@@ -67,7 +77,8 @@ console.log(containsSearchResults);
 const equalSearchResults = countryList.searchByNameEquals("PALESTINE");
 console.log("the output of the element that you searched for in the array:");
 console.log(equalSearchResults);
-
+countryList.addToStart("iraq");
+console.log("after add element at the beginning of the array:", countryList.countries);
 
 
 
