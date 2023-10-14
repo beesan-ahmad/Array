@@ -3,8 +3,8 @@ class Array {
         this.countries = [];
     }
     // Method to add elements to the array 
-    addToArray(...elements) {
-        this.countries.push(...elements);
+    addToArray(element) {
+        this.countries.push(element);
     }
     /*  
     In this method we sort the array from a-z (rearrange the elements in the array in 
@@ -48,7 +48,10 @@ class Array {
 }
 
 const countryList = new Array();
-countryList.addToArray("palestine", "jordan", "syria", "lebanon");
+countryList.addToArray("palestine");
+countryList.addToArray("jordan");
+countryList.addToArray("syria");
+countryList.addToArray("lebanon");
 console.log("original array:", countryList.countries);
 
 countryList.sortFromAToZ();
