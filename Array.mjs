@@ -30,6 +30,15 @@ class Array {
                 console.log("Country not found. Edit failed");
             }
         }
+          // delete a country by ID
+    deleteCountry(id) {
+        const index = this.countries.findIndex(c => c.id === id);
+        if (index !== -1) {//check the index of array
+            this.countries.splice(index, 1);
+        } else {
+            console.log("Country not found. Deletion failed");
+        }
+    }
 }
 
 
@@ -65,4 +74,6 @@ countryList.countries[1].cities = citiesInJordan;
 countryList.countries[2].cities = citiesInSyria;
 console.log("Original array:", JSON.stringify(countryList.listCountries(), null, 2));
 countryList.editCountry(2, "Jordan (Updated)", 11000000);
-console.log("Updated array:", countryList.listCountries());
+console.log("Updated array:",JSON.stringify(countryList.listCountries(), null, 2));
+countryList.deleteCountry(3);//delete syria country
+console.log("After deletion:", countryList.listCountries());
