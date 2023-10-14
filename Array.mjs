@@ -85,19 +85,24 @@ class Array {
             console.log("Element not found in the array. Deletion failed.");
         }
     }
-   
+
     shrink(chunkSize) {
         const result = [];
         for (let i = 0; i < this.countries.length; i += chunkSize) {
-          result.push(this.countries.slice(i, i + chunkSize));
+            result.push(this.countries.slice(i, i + chunkSize));
         }
         return result;
-      }
-      
+    }
+    // Method to join arrays
+    joinArrays(arr) {
+        if (!arr || typeof arr !== 'string') {
+            console.log("Please enter a valid array input");
+        }
+        this.countries = this.countries.concat(arr);
 
 
+    }
 }
-
 const countryList = new Array();
 countryList.addToArray("palestine");
 countryList.addToArray("jordan");
@@ -133,6 +138,9 @@ console.log("original array:", countryList.countries);
 // countryList.deleteByName("oman");//print an error message
 // countryList.deleteByName(11);//print an error message
 // console.log(countryList.countries);
-const subArrays = countryList.shrink(1);
-console.log(subArrays);
-
+// const subArrays = countryList.shrink(1);
+// console.log(subArrays);
+countryList.joinArrays("India");
+countryList.joinArrays("usa");
+console.log(countryList.countries);
+countryList.joinArrays(99);
