@@ -72,6 +72,20 @@ class Array {
             console.log("Invalid start or end positions.try again.");
         }
     }
+    deleteByName(element) {
+        if (!element || typeof element !== 'string') {
+            console.log("Please enter a valid name for deletion.");
+            return;
+        }
+
+        const index = this.countries.indexOf(element);
+        if (index !== -1) {
+            this.countries.splice(index, 1); // Deletes the element with the specified name
+        } else {
+            console.log("Element not found in the array. Deletion failed.");
+        }
+    }
+
 
 
 
@@ -107,6 +121,10 @@ countryList.addToEnd(99);//print an error message
 countryList.deleteFromArray(1, 3); // Deletes elements from index 1 to 3
 console.log(countryList.countries);
 countryList.deleteFromArray(8, 11);//print an error message
-
+countryList.deleteByName("usa");//remove usa
+console.log(countryList.countries);
+countryList.deleteByName("oman");//print an error message
+countryList.deleteByName(11);//print an error message
+console.log(countryList.countries);
 
 
