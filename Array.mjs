@@ -111,6 +111,13 @@ class Array {
         }
         return this.countries.indexOf(element);
     }
+    // Method to check if an element exists in the array and return a boolean
+    doesElementExist(element) {
+        if (!element || typeof element !== 'string') {
+            console.log("Please enter a valid input to check if is exist or not.");
+        }
+        return this.countries.includes(element);
+    }
 }
 const countryList = new Array();
 countryList.addToArray("palestine");
@@ -153,8 +160,11 @@ console.log("original array:", countryList.countries);
 countryList.joinArrays("usa");
 console.log(countryList.countries);
 // countryList.joinArrays(99);
-console.log("the length of the array is:" + countryList.getArrayLength());
-console.log("the index of the element that you checked:")
-console.log(countryList.getElementIndex("usa"));
-console.log(countryList.getElementIndex(7));//print an error message
-console.log(countryList.getElementIndex());
+// console.log("the length of the array is:" + countryList.getArrayLength());
+// console.log("the index of the element that you checked:")
+// console.log(countryList.getElementIndex("usa"));
+// console.log(countryList.getElementIndex(7));//print an error message
+// console.log(countryList.getElementIndex());
+console.log("check if the entered element is exist or not:")
+console.log(countryList.doesElementExist("lebanon"));
+console.log(countryList.doesElementExist(0));
