@@ -85,8 +85,15 @@ class Array {
             console.log("Element not found in the array. Deletion failed.");
         }
     }
-
-
+   
+    shrink(chunkSize) {
+        const result = [];
+        for (let i = 0; i < this.countries.length; i += chunkSize) {
+          result.push(this.countries.slice(i, i + chunkSize));
+        }
+        return result;
+      }
+      
 
 
 }
@@ -97,34 +104,35 @@ countryList.addToArray("jordan");
 countryList.addToArray("syria");
 countryList.addToArray("lebanon");
 console.log("original array:", countryList.countries);
-countryList.addToStart("qatar");
-console.log("after add element at the beginning of the array:", countryList.countries);
+// countryList.addToStart("qatar");
+// console.log("after add element at the beginning of the array:", countryList.countries);
 
-countryList.sortFromAToZ();
-console.log("Sorting array from A to Z:", "[" + countryList.countries.join(", ") + "]");
+// countryList.sortFromAToZ();
+// console.log("Sorting array from A to Z:", "[" + countryList.countries.join(", ") + "]");
 
-countryList.sortFromZToA();
-console.log("Sorting array from Z to A:", "[" + countryList.countries.join(", ") + "]");
+// countryList.sortFromZToA();
+// console.log("Sorting array from Z to A:", "[" + countryList.countries.join(", ") + "]");
 
-const containsSearchResults = countryList.searchByNameContains("s");
-console.log("the output of the element that you searched for in the array:")
-console.log(containsSearchResults);
+// const containsSearchResults = countryList.searchByNameContains("s");
+// console.log("the output of the element that you searched for in the array:")
+// console.log(containsSearchResults);
 
-const equalSearchResults = countryList.searchByNameEquals("PALESTINE");
-console.log("the output of the element that you searched for in the array:");
-console.log(equalSearchResults);
-countryList.addToStart(0);//print an error message
-countryList.addToEnd("usa");
-console.log(countryList.countries);
-countryList.addToEnd(99);//print an error message
+// const equalSearchResults = countryList.searchByNameEquals("PALESTINE");
+// console.log("the output of the element that you searched for in the array:");
+// console.log(equalSearchResults);
+// countryList.addToStart(0);//print an error message
+// countryList.addToEnd("usa");
+// console.log(countryList.countries);
+// countryList.addToEnd(99);//print an error message
 
-countryList.deleteFromArray(1, 3); // Deletes elements from index 1 to 3
-console.log(countryList.countries);
-countryList.deleteFromArray(8, 11);//print an error message
-countryList.deleteByName("usa");//remove usa
-console.log(countryList.countries);
-countryList.deleteByName("oman");//print an error message
-countryList.deleteByName(11);//print an error message
-console.log(countryList.countries);
-
+// countryList.deleteFromArray(1, 3); // Deletes elements from index 1 to 3
+// console.log(countryList.countries);
+// countryList.deleteFromArray(8, 11);//print an error message
+// countryList.deleteByName("usa");//remove usa
+// console.log(countryList.countries);
+// countryList.deleteByName("oman");//print an error message
+// countryList.deleteByName(11);//print an error message
+// console.log(countryList.countries);
+const subArrays = countryList.shrink(1);
+console.log(subArrays);
 
