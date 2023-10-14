@@ -58,13 +58,21 @@ class Array {
     }
     addToEnd(element) {
         if (typeof element === 'string') {
-        this.countries[this.countries.length] = element;
+            this.countries[this.countries.length] = element;
         }
         else {
             console.log("Please enter a valid input to add it at the end of the array.");
         }
-      }
-      
+    }
+    // Method to delete elements from the array (start and/or end)
+    deleteFromArray(start, end) {
+        if (((start >= 0 && end >= start) && (end < this.countries.length))) {
+            this.countries.splice(start, end - start + 1);
+        } else {
+            console.log("Invalid start or end positions.try again.");
+        }
+    }
+
 
 
 }
@@ -95,5 +103,10 @@ countryList.addToStart(0);//print an error message
 countryList.addToEnd("usa");
 console.log(countryList.countries);
 countryList.addToEnd(99);//print an error message
+
+countryList.deleteFromArray(1, 3); // Deletes elements from index 1 to 3
+console.log(countryList.countries);
+countryList.deleteFromArray(8, 11);//print an error message
+
 
 
