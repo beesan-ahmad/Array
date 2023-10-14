@@ -22,37 +22,42 @@ class Array {
         this.countries.sort((a, b) => b.localeCompare(a));
     }
     // In this method we search for a country and return all results that close to the input 
-    searchByNameContains(input1) {
-        if (!input1 || typeof input1 !== 'string') {
+    searchByNameContains(element) {
+        if (!element || typeof element !== 'string') {
             return "Please enter a valid search input.";
         }
         let resultOfContainsSearch = this.countries.filter(country => country.toLowerCase()
-            .includes(input1.toLowerCase()));
+            .includes(element.toLowerCase()));
         if (resultOfContainsSearch.length === 0) {
-            return `No results found for "${input1}".`;
+            return `No results found for "${element}".`;
         }
         return resultOfContainsSearch;
     }
     // Method to search for countries whose names are equal to the input
-    searchByNameEquals(input2) {
-        if (!input2 || typeof input2 !== 'string') {
+    searchByNameEquals(element) {
+        if (!element || typeof element !== 'string') {
             return "Please enter a valid search input.";
         }
-        let resultOfEqualSearch = this.countries.filter(country => country.toLowerCase() === input2
-            .toLowerCase());
+        let resultOfEqualSearch = this.countries.filter(country => country.toLowerCase()
+            === element.toLowerCase());
         if (resultOfEqualSearch.length === 0) {
-            return `No results found for "${input2}".`;
+            return `No results found for "${element}".`;
         }
         return resultOfEqualSearch;
     }
 
     addToStart(element) {
-        for (let i = this.countries.length - 1; i >= 0; i--) {
-          this.countries[i + 1] = this.countries[i];
+        if (typeof element === 'string') {
+            for (let i = this.countries.length - 1; i >= 0; i--) {
+                this.countries[i + 1] = this.countries[i];
+            }
+            this.countries[0] = element;
+        } else {
+            console.log("Please enter a valid input to add it at the beginning of the array.");
         }
-        this.countries[0] = element;
-      }
-      
+    }
+
+
 }
 
 const countryList = new Array();
@@ -61,7 +66,7 @@ countryList.addToArray("jordan");
 countryList.addToArray("syria");
 countryList.addToArray("lebanon");
 console.log("original array:", countryList.countries);
-countryList.addToStart("qatar")
+countryList.addToStart("qatar");
 console.log("after add element at the beginning of the array:", countryList.countries);
 
 countryList.sortFromAToZ();
@@ -77,8 +82,9 @@ console.log(containsSearchResults);
 const equalSearchResults = countryList.searchByNameEquals("PALESTINE");
 console.log("the output of the element that you searched for in the array:");
 console.log(equalSearchResults);
-countryList.addToStart("iraq");
-console.log("after add element at the beginning of the array:", countryList.countries);
+countryList.addToStart(0);//print an error message
+console.log(countryList.countries);
+
 
 
 
