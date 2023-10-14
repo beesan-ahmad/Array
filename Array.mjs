@@ -99,9 +99,11 @@ class Array {
             console.log("Please enter a valid array input");
         }
         this.countries = this.countries.concat(arr);
-
-
     }
+    //array length
+    getArrayLength() {
+        return this.countries.length;
+      }
 }
 const countryList = new Array();
 countryList.addToArray("palestine");
@@ -140,7 +142,8 @@ console.log("original array:", countryList.countries);
 // console.log(countryList.countries);
 // const subArrays = countryList.shrink(1);
 // console.log(subArrays);
-countryList.joinArrays("India");
-countryList.joinArrays("usa");
-console.log(countryList.countries);
-countryList.joinArrays(99);
+// countryList.joinArrays("India");
+ countryList.joinArrays("usa");
+ console.log(countryList.countries);
+// countryList.joinArrays(99);
+console.log("the length of the array is:" + countryList.getArrayLength());
