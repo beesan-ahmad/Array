@@ -103,7 +103,14 @@ class Array {
     //array length
     getArrayLength() {
         return this.countries.length;
-      }
+    }
+    // Method to get the index of an element
+    getElementIndex(element) {
+        if (!element || typeof element !== 'string') {
+            console.log("Please enter a valid input to get the index.");
+        }
+        return this.countries.indexOf(element);
+    }
 }
 const countryList = new Array();
 countryList.addToArray("palestine");
@@ -143,7 +150,11 @@ console.log("original array:", countryList.countries);
 // const subArrays = countryList.shrink(1);
 // console.log(subArrays);
 // countryList.joinArrays("India");
- countryList.joinArrays("usa");
- console.log(countryList.countries);
+countryList.joinArrays("usa");
+console.log(countryList.countries);
 // countryList.joinArrays(99);
 console.log("the length of the array is:" + countryList.getArrayLength());
+console.log("the index of the element that you checked:")
+console.log(countryList.getElementIndex("usa"));
+console.log(countryList.getElementIndex(7));//print an error message
+console.log(countryList.getElementIndex());
