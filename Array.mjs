@@ -33,18 +33,37 @@ class Array {
         }
         return resultOfContainsSearch;
     }
+    // Method to search for countries whose names are equal to the input
+    searchByNameEquals(input2) {
+        if (!input2 || typeof input2 !== 'string') {
+            return "Please enter a valid search input.";
+        }
+        let resultOfEqualSearch = this.countries.filter(country => country.toLowerCase() === input2
+            .toLowerCase());
+        if (resultOfEqualSearch.length === 0) {
+            return `No results found for "${input2}".`;
+        }
+        return resultOfEqualSearch;
+    }
 }
 
 const countryList = new Array();
 countryList.addToArray("palestine", "jordan", "syria", "lebanon");
 console.log("original array:", countryList.countries);
+
 countryList.sortFromAToZ();
 console.log("Sorting array from A to Z:", "[" + countryList.countries.join(", ") + "]");
+
 countryList.sortFromZToA();
 console.log("Sorting array from Z to A:", "[" + countryList.countries.join(", ") + "]");
-const searchResults = countryList.searchByNameContains("s");
+
+const containsSearchResults = countryList.searchByNameContains("s");
 console.log("the output of the element that you searched for in the array:")
-console.log(searchResults);
+console.log(containsSearchResults);
+
+const equalSearchResults = countryList.searchByNameEquals("PALESTINE");
+console.log("the output of the element that you searched for in the array:");
+console.log(equalSearchResults);
 
 
 
