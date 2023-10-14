@@ -21,6 +21,18 @@ class Array {
     sortFromZToA() {
         this.countries.sort((a, b) => b.localeCompare(a));
     }
+    // In this method we search for a country and return all results that close to the input 
+    searchByNameContains(input1) {
+        if (!input1 || typeof input1 !== 'string') {
+            return "Please enter a valid search input.";
+        }
+        let resultOfContainsSearch = this.countries.filter(country => country.toLowerCase()
+            .includes(input1.toLowerCase()));
+        if (resultOfContainsSearch.length === 0) {
+            return `No results found for "${input1}".`;
+        }
+        return resultOfContainsSearch;
+    }
 }
 
 const countryList = new Array();
@@ -30,7 +42,9 @@ countryList.sortFromAToZ();
 console.log("Sorting array from A to Z:", "[" + countryList.countries.join(", ") + "]");
 countryList.sortFromZToA();
 console.log("Sorting array from Z to A:", "[" + countryList.countries.join(", ") + "]");
-
+const searchResults = countryList.searchByNameContains("s");
+console.log("the output of the element that you searched for in the array:")
+console.log(searchResults);
 
 
 
